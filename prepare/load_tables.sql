@@ -1,3 +1,27 @@
+COPY ipl_m(
+    id,
+    match_id, 
+    city, 
+    date, 
+    player_of_match, 
+    venue,
+    neutral_venue,
+    team1, 
+    team2, 
+    toss_winner,
+    toss_decision,
+    winner,
+    result,
+    result_margin,
+    eliminator,
+    method,
+    umpire1,
+    umpire2
+    )
+FROM 'data/ipl_m_2008-2020.csv'
+DELIMITER ','
+CSV HEADER;
+
 COPY ipl_byb(
     id,
     match_id, 
@@ -19,31 +43,6 @@ COPY ipl_byb(
     batting_team,
     bowling_team
     )
-FROM '/home/gautham/sql_projects/ipl/data/ipl_byb_2008-2020.csv'
-DELIMITER ','
-CSV HEADER;
-
-
-COPY ipl_m(
-    id,
-    match_id, 
-    city, 
-    date, 
-    player_of_match, 
-    venue,
-    neutral_venue,
-    team1, 
-    team2, 
-    toss_winner,
-    toss_decision,
-    winner,
-    result,
-    result_margin,
-    eliminator,
-    method,
-    umpire1,
-    umpire2
-    )
-FROM '/home/gautham/sql_projects/ipl/data/ipl_m_2008-2020.csv'
+FROM 'data/ipl_byb_2008-2020.csv'
 DELIMITER ','
 CSV HEADER;
