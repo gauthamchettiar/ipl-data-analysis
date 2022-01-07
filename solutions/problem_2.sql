@@ -4,7 +4,10 @@
 
 -- get a list of teams from that season
 SELECT DISTINCT team1 
-FROM ipl_m 
-WHERE EXTRACT(YEAR FROM date) = :'season';
+FROM v_ipl_m_with_season 
+WHERE season = :'season';
 
--- Bonus : 
+-- Bonus : get team count in each season
+SELECT season, COUNT(DISTINCT team1) AS team_count 
+FROM v_ipl_m_with_season
+GROUP BY season;

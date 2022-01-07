@@ -2,7 +2,7 @@
 SELECT DISTINCT EXTRACT(YEAR FROM date) AS season 
 FROM ipl_m;
 
--- Bonus : Get the count number of seasons
+-- Bonus : Get the count of number of seasons
 SELECT COUNT(DISTINCT EXTRACT(YEAR FROM date)) 
 FROM ipl_m;
 
