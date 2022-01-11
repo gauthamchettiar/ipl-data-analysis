@@ -7,8 +7,8 @@ WITH cte AS (
 	FROM v_ipl_m_with_season
 ),
 cte2 AS (
-	SELECT team, season, COUNT(*) as played_count,
-	SUM(CASE WHEN team = winner THEN 1 ELSE 0 END) AS win_count
+	SELECT team, season, COUNT(*) as matches_played,
+	SUM(CASE WHEN team = winner THEN 1 ELSE 0 END) AS matches_won
 	FROM cte
 	GROUP BY team, season
 	ORDER BY team, season
@@ -34,3 +34,21 @@ SELECT winner as team,
 FROM v_ipl_m_with_season
 GROUP BY winner
 ORDER BY winner;
+
+-- Preparation : Create a VIEW v_aggregated_ipl_m
+CREATE VIEW v_aggregated_ipl_m AS
+WITH cte AS (
+	SELECT team1 AS team, season, match_type, winner
+	FROM v_ipl_m_with_match_type
+	UNION ALL 
+	SELECT team2 AS team, season, match_type, winner
+	FROM v_ipl_m_with_match_type)
+SELECT team, season,
+COUNT(*) AS matches_played,
+SUM(CASE WHEN team = winner THEN 1 ELSE 0 END) AS matches_won,
+SUM(CASE WHEN match_type = 'Playoffs' THEN 1 ELSE 0 END) AS playoffs_played,
+SUM(CASE WHEN match_type = 'Finals' THEN 1 ELSE 0 END) AS finals_played,
+SUM(CASE WHEN match_type = 'Finals' AND team = winner THEN 1 ELSE 0 END) AS finals_won
+from cte
+GROUP BY team, season
+ORDER BY team, season;

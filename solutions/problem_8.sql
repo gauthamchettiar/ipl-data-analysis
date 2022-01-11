@@ -26,8 +26,8 @@ WITH cte AS (
 	SELECT team2 AS team, match_type, winner
 	FROM v_ipl_m_with_match_type)
 SELECT team, 
-SUM(CASE WHEN match_type = 'Playoffs' THEN 1 ELSE 0 END) AS playoffs_reached,
-SUM(CASE WHEN match_type = 'Finals' THEN 1 ELSE 0 END) AS finals_reached,
+SUM(CASE WHEN match_type = 'Playoffs' THEN 1 ELSE 0 END) AS playoffs_played,
+SUM(CASE WHEN match_type = 'Finals' THEN 1 ELSE 0 END) AS finals_played,
 SUM(CASE WHEN match_type = 'Finals' AND team = winner THEN 1 ELSE 0 END) AS finals_won
 from cte
 GROUP BY team
