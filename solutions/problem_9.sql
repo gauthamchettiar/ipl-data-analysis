@@ -1,4 +1,4 @@
--- Problem 9 : 
+-- Problem 9 : Get total matches played, matches won and win percentage per season
 WITH cte AS (
 	SELECT team1 as team, winner, season
 	FROM v_ipl_m_with_season
