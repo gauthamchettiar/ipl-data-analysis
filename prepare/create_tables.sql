@@ -1,3 +1,7 @@
+-- below SQL can be run on psql shell (spawned within this directory) directly by using 
+--      \i prepare/create_tables.sql
+-- same can also be run using pgAdmin UI by copy pasting below code over there.
+
 DROP TABLE  IF EXISTS ipl_m CASCADE;
 
 CREATE TABLE ipl_m (

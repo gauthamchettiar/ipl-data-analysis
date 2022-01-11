@@ -1,3 +1,8 @@
+-- this will load data into tables created using './create_tables.sql' script
+-- change below data location (write full path to file) and run the script as
+--          \i prepare/load_tables.sql
+-- data from 'data/m_2008-2020.csv' and 'data/ipl_byb_2008-2020.csv' can also be directly imported into pgAdmin
+
 COPY ipl_m(
     id,
     match_id, 
