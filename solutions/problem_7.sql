@@ -7,7 +7,7 @@ LIMIT 1;
 
 -- Bonus : Get final matches for all seasons
 -- postgres only solution
-SELECT DISTINCT ON (season) team1, team2 
+SELECT DISTINCT ON (season) season, team1, team2 
 FROM v_ipl_m_with_season 
 ORDER BY season, date DESC;
 
@@ -21,7 +21,7 @@ WITH temp_cte AS
         ) AS rn
     FROM v_ipl_m_with_season
 )
-SELECT team1, team2
+SELECT season, team1, team2
 FROM temp_cte
 WHERE rn = 1
 ORDER BY date;
