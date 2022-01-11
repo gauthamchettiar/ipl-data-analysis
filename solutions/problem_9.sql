@@ -13,7 +13,7 @@ cte2 AS (
 	GROUP BY team, season
 	ORDER BY team, season
 )
-SELECT *, ROUND(CAST(win_count AS DECIMAL)/played_count * 100, 5) AS win_percentage
+SELECT *, ROUND(CAST(matches_won AS DECIMAL)/matches_played * 100, 2) AS win_percentage
 FROM cte2;
 
 -- Bonus : Display just win_count for each team over seasons.
